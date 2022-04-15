@@ -103,9 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               cats.label,
               style: const TextStyle(
-                fontSize: 20.0,
+                fontSize: 26.0,
                 fontWeight: FontWeight.w700,
-                fontFamily: 'Palatino',
               ),
             )
           ],
