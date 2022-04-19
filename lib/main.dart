@@ -20,7 +20,7 @@ class CatsApp extends StatelessWidget {
       // 4
       title: 'Породы кошек',
       // 5
-      theme: theme.copyWith(
+      theme: ThemeData(scaffoldBackgroundColor: Colors.grey,
         colorScheme: theme.colorScheme.copyWith(
           primary: Colors.blueGrey,
         ),
@@ -50,44 +50,43 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       // 3
-      body: SafeArea(
-        // 4
-        // 4
-        child: ListView.builder(
-          // 5
-          itemCount: Cats.samples.length,
-          // 6
-          itemBuilder: (BuildContext context, int index) {
-            // 7
-            return GestureDetector(
-              // 8
-              onTap: () {
-                // 9
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      // 10
-                      return CatsDetail(cats: Cats.samples[index]);
-                    },
-                  ),
-                );
-              },
-              // 11
-              child: buildCatsCard(Cats.samples[index]),
-            );
-          },
-        ),
+      body: GridView.builder(
+        // 5
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemCount: Cats.samples.length,
+        // 6
+        itemBuilder: (BuildContext context, int index) {
+          // 7
+          return GestureDetector(
+            // 8
+            onTap: () {
+              // 9
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    // 10
+                    return CatsDetail(cats: Cats.samples[index]);
+                  },
+                ),
+              );
+            },
+            // 11
+            child: buildCatsCard(Cats.samples[index]),
+          );
+        },
       ),
     );
   }
 
   Widget buildCatsCard(Cats cats) {
-    return Card(
+
+    return Card( color: Colors.white60,
+
       // 1
       elevation: 2.0,
       // 2
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
       // 3
       child: Padding(
         padding: const EdgeInsets.all(16.0),
